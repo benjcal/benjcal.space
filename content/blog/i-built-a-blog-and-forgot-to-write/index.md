@@ -2,12 +2,11 @@
 title = "I Built a Blog and Forgot to Write"
 description = ""
 date = "2026-08-05"
-draft = true
 +++
 
 Hello there! It’s been a while since I last wrote something 🙃.
 
-Part of it was just life getting busy, but I think a bigger factor was how hard I made it for myself to write anything. You see, as a proper engineer I had the most efficient personal blog. The content was written in markdown, made into a static site using `11ty`, filled with custom scripts to process images and videos, custom CSS for fonts, nice clean templates and hand-crafted theme, and scripts to deploy everything with a single `npm` command.
+Part of it was just life getting busy, but I think a bigger factor was how hard I made it for myself to write anything. You see, as a proper engineer I had the most efficient personal blog. The content was written in markdown, made into a static site using [11ty](https://www.11ty.dev/), filled with custom scripts to process images and videos, custom CSS for fonts, nice clean templates and hand-crafted theme, and scripts to deploy everything with a single `npm` command.
 
 Well, it was perfect, minimalist, fast, very aesthetically pleasing for me (that is, the codebase). Except that I didn't write anything. It was too hard. I had to make a new folder inside `_content/` and then a `.md` file named the same as the parent folder (have you seen how ugly 5 `index.md` tabs look? not knowing what is what?).
 
@@ -21,15 +20,17 @@ By the time I was done with all of that I had already forgotten what I wanted to
 
 So then the issue was _obviously_ `11ty`. If only I had _more_ control over how things work so that I could fine-tune everything exactly the way I wanted it... YES! I'll build my own static site generator. How hard could it be!? (famous last words...)
 
+![xkcd: Automation](automation.png)
+
 So I did, or rather, so I started and never finished... 
 
-I thought that a clean UNIX-philosophy static site generator would do: `pandoc` can convert markdown files to HTML, some `bash` scripts to iterate through my markdown files, inject some CSS and bob's your uncle. But wait. How do I make an index page listing all the article titles and dates and sort them? well I need to read the front matter for all the posts. But wait, how do I generate an RSS/Atom feed? maybe a template? I need the data from the front matter of the posts for this _and_ a templating engine. How do I filter to exclude drafts? how do I serve? can I have hot reload?
+I thought that a clean UNIX-philosophy static site generator would do: [pandoc](https://pandoc.org/) can convert markdown files to HTML, some `bash` scripts to iterate through my markdown files, inject some CSS and bob's your uncle. But wait. How do I make an index page listing all the article titles and dates and sort them? well I need to read the front matter for all the posts. But wait, how do I generate an RSS/Atom feed? maybe a template? I need the data from the front matter of the posts for this _and_ a templating engine. How do I filter to exclude drafts? how do I serve? can I have hot reload?
 
 Yeah, how hard can it be!
 
 But then I realized something: I was mixing up the process of building an efficient, performant, featureful blogging engine with the goal of writing posts! 🤦‍♂️
 
-##### Process vs Results
+## 🛠️ Process vs Results
 
 This might be obvious to some of you but it wasn't for me until recently: in life there are things I care about the **_process_** and others that I care about the **_results_**, and mixing the two has caused me so much pain.
 
@@ -49,11 +50,11 @@ I installed Fedora and everything just worked. It was awesome. Again I had confu
 
 I think there's more nuance to it, but as a tinkerer/maker/engineer/hacker/what have you, I'm used to enjoying the process: building the thing, knowing how things work under the hood, being in full control and the ~~power~~ understanding it entails, realizing a vision, overcoming difficulties, learning new things and bending the computer/device/situation to my will.
 
-All of that is great, but when embarking on something new, knowing if I'm embarking on it for the process/journey or for the results has been saving me some headaches lately. As an example, I'm currently picking up Linear Algebra. The journey is arduous but I'm doing this for the results. I need this to better understand Statistical Learning. On the other hand, I'm also learning Real Analysis. It could be useful someday, but I'm doing it because I love the journey. Analysis is beautiful and elegant, infinite series are weird and mysterious (Fourier series are straight up wizardry!), Euler was an absolute genius, the landscapes are gorgeous, and I'm in it for the journey!
+All of that is great, but when embarking on something new, knowing if I'm embarking on it for the process/journey or for the results has been saving me some headaches lately. As an example, I'm currently picking up Linear Algebra. The journey is arduous but I'm doing this for the results. I need this to better understand [Statistical Learning](https://www.statlearning.com/). On the other hand, I'm also learning Real Analysis. It could be useful someday, but I'm doing it because I love the journey. Analysis is beautiful and elegant, infinite series are weird and mysterious (Fourier series are straight up wizardry!), Euler was an absolute genius, the landscapes are gorgeous, and I'm in it for the journey!
 
-##### Concessions
+## 🤝 Concessions
 
-So then, here I am actually writing! This blog is still by any measure nerdy and opinionated, it is still a static site built with Zola, still deploying to Bunny by GitHub Actions... but now I don't care that much about the aesthetics of the codebase. I'm using Sveltia CMS to manage content. So I went from creating a file, wrangling front matter, `index.md` tab archeology (the `index.md` files are still there... I just don't see them) to a textbox on a website. Write some text, see a preview, drag and drop images, and publish. It went from a "project" to a "textbox". Sure, it seems like something small, all of this just to say that I'm now using a CMS? but the fact is I'm actually writing again 😃!
+So then, here I am actually writing! This blog is still by any measure nerdy and opinionated, it is still a static site built with [Zola](https://www.getzola.org/), still deploying to [Bunny](https://bunny.net/) by GitHub Actions... but now I don't care that much about the aesthetics of the codebase. I'm using [Sveltia CMS](https://sveltia-cms.dev/) to manage content. So I went from creating a file, wrangling front matter, `index.md` tab archeology (the `index.md` files are still there... I just don't see them) to a textbox on a website. Write some text, see a preview, drag and drop images, and publish. It went from a "project" to a "textbox". Sure, it seems like something small, all of this just to say that I'm now using a CMS? but the fact is I'm actually writing again 😃!
 
 ---
 

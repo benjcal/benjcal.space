@@ -59,7 +59,7 @@ void chip8_load_rom(Chip8 *chip8, char *path, uint16_t offset) {
 
 This is a very simple function. Read one byte from the file, set memory to byte. Repeat until End of File (EOF). See, there's nothing wrong with it! 🤦‍♂️ I mean, it worked for some files but it didn't for others? People complain about segmentation faults, but those are preferable to this!
 
-So I decided to take a closer look at the file that my emulator was having trouble with, and you'll [never believe what I found](https://youtu.be/dQw4w9WgXcQ)!
+So I decided to take a closer look at the file that my emulator was having trouble with, and you'll never believe what I found!
 
 Take a look above and notice what is the very next byte missing in memory, or where reading the file stopped. On the emulator memory the lasts bytes are `0x1228` and nothing else is read after that. In the ROM the very next byte after that is `0xFF`... Well, that is interesting... Why would my program stop reading when it finds `0xFF`? To confirm this theory I changed that byte with `0xFE` and yep, the emulator read `0xFE` without a problem, all the way to the next `0xFF`! Well well well, the plot thickens!
 
