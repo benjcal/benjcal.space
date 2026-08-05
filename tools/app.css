@@ -13,6 +13,8 @@
   --w: calc(680px + 32px * 2);
   --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --color-accent: #075985;
+  --color-accent-light: #7dd3fc;
 }
 
 @utility dark-bg {
@@ -29,6 +31,15 @@ h3 {
   @apply font-semibold;
 }
 
+/* site accent: headings pick up the accent tone (subtle on linen) */
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5 {
+  @apply text-accent dark:text-accent-light;
+}
+
 pre {
   direction: ltr;
 }
@@ -37,11 +48,11 @@ article {
   @apply text-lg leading-[1.8] text-black dark:text-white;
 
   a {
-    @apply text-sky-700 dark:text-sky-300;
+    @apply text-accent dark:text-accent-light;
   }
 
   code {
-    @apply inline-block rounded-md bg-black/[7%] px-1.5 py-0.5 text-sm! leading-6! font-normal text-amber-700 dark:bg-white/[12%] dark:text-amber-300;
+    @apply inline-block rounded-md bg-black/[7%] px-1.5 py-0.5 text-sm! leading-6! font-normal text-stone-600 dark:bg-white/[12%] dark:text-stone-300;
 
     /* strip the literal backticks the typography plugin injects */
     &::before,
