@@ -32,7 +32,7 @@ jobs:
           RCLONE_CONFIG_BUNNY_TYPE: bunny
           RCLONE_CONFIG_BUNNY_STORAGE_ZONE: ${{ secrets.BUNNY_STORAGE_ZONE }}
           RCLONE_CONFIG_BUNNY_KEY: ${{ secrets.BUNNY_STORAGE_PASSWORD }}
-        run: rclone sync public/ bunny: --verbose
+        run: 'rclone sync public/ bunny: --verbose'
 
       - name: Purge CDN cache
         env:
