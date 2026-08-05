@@ -7,7 +7,7 @@ draft = true
 
 Hello there! It’s been a while since I last wrote something 🙃.
 
-Part of it was just life getting busy, but I think a bigger factor was how hard I made it for myself to write anything. You see, as a proper engineer I had the most efficient personal blog. The content was written in markdown, made into a static site using `11ty`, filled with custom scripts to process images and videos, custom CSS for fonts, nice clean templates and hand-crafted theme, and scripts to deploy everything with a single `npm` command.
+Part of it was just life getting busy, but I think a bigger factor was how hard I made it for myself to write anything. You see, as a proper engineer I had the most efficient personal blog. The content was written in markdown, made into a static site using `11ty`, filled with custom scripts to process images and videos, custom fonts CSS, nice clean templates and hand-crafted theme, and scripts to deploy everything with a single `npm` command.
 
 Well, it was perfect, minimalist, fast, very aesthetically pleasing for me (that is, the codebase). Except that I didn't write anything. It was too hard. I had to make a new folder inside `_content/` and then a `.md` file named the same as the parent folder (have you seen how ugly 5 `index.md` tabs look? not knowing what is what?).
 
