@@ -19,11 +19,11 @@ Ugh!
 
 By the time I was done with all of that I had already forgotten what I wanted to write about.
 
-So then the issue was _obviously_ `11ty`. If I had **_more_** control over how things work so that I could fine-tune everything exactly the way I wanted it... YES! I'll build my own static site generator. How hard could it be!? (famous last words...)
+So then the issue was _obviously_ `11ty`. If only I had _more_ control over how things work so that I could fine-tune everything exactly the way I wanted it... YES! I'll build my own static site generator. How hard can it be!? (famous last words...)
 
 So I did, or rather, so I started and never finished... 
 
-I thought that a clean UNIX-philosophy static site generator would do: `pandoc` can convert markdown files to html, some `bash` scripts to iterate through my markdown files, inject some CSS and bob's your uncle. But wait. How do I make an index page listing all the article titles and dates and sort them? well I need to read the front matter for all the posts. But wait, how do I generate an RSS/Atom feed? maybe a template? I need the data from the front matter of the posts for this. How do I filter to exclude drafts? how do I serve? can I have hot reload?
+I thought that a clean UNIX-philosophy static site generator would do: `pandoc` can convert markdown files to HTML, some `bash` scripts to iterate through my markdown files, inject some CSS and bob's your uncle. But wait. How do I make an index page listing all the article titles and dates and sort them? well I need to read the front matter for all the posts. But wait, how do I generate an RSS/Atom feed? maybe a template? I need the data from the front matter of the posts for this _and_ a templating engine. How do I filter to exclude drafts? how do I serve? can I have hot reload?
 
 Yeah, how hard can it be!
 
