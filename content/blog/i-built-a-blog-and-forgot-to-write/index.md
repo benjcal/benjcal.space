@@ -7,7 +7,7 @@ draft = true
 
 Hello there! It’s been a while since I last wrote something 🙃.
 
-Part of it was just life getting busy, but I think a bigger factor was how hard I made it for myself to write anything. You see, as a proper engineer I had the most efficient personal blog. The content was written in markdown, made into a static site using `11ty`, filled with custom scripts to process images and videos, custom fonts CSS, nice clean templates and hand-crafted theme, and scripts to deploy everything with a single `npm` command.
+Part of it was just life getting busy, but I think a bigger factor was how hard I made it for myself to write anything. You see, as a proper engineer I had the most efficient personal blog. The content was written in markdown, made into a static site using `11ty`, filled with custom scripts to process images and videos, custom CSS for fonts, nice clean templates and hand-crafted theme, and scripts to deploy everything with a single `npm` command.
 
 Well, it was perfect, minimalist, fast, very aesthetically pleasing for me (that is, the codebase). Except that I didn't write anything. It was too hard. I had to make a new folder inside `_content/` and then a `.md` file named the same as the parent folder (have you seen how ugly 5 `index.md` tabs look? not knowing what is what?).
 
@@ -19,7 +19,7 @@ Ugh!
 
 By the time I was done with all of that I had already forgotten what I wanted to write about.
 
-So then the issue was _obviously_ `11ty`. If only I had _more_ control over how things work so that I could fine-tune everything exactly the way I wanted it... YES! I'll build my own static site generator. How hard can it be!? (famous last words...)
+So then the issue was _obviously_ `11ty`. If only I had _more_ control over how things work so that I could fine-tune everything exactly the way I wanted it... YES! I'll build my own static site generator. How hard could it be!? (famous last words...)
 
 So I did, or rather, so I started and never finished... 
 
@@ -41,19 +41,19 @@ You see, 3D printing became so hard: what was that local DNS I assigned to the 3
 
 The whole thing went from putting an SD card in the 3D printer and printing, to a whole bunch of steps because of all the control I had. Sure, my 3D printer was arguably more powerful, but at the cost of so much more complexity. And I've now realized that regarding 3D printing, I couldn't care less about the process. I just want the prints.
 
-With Linux the story was a bit similar. I've used Arch since forever. It is an awesome distro where all the newest OSS software lands first. You can customize it to your heart's content, to the point of knowing exactly how many processes are running after boot, have a full working system with like 400MB of ram usage, and having your own [rice](https://www.reddit.com/r/unixporn/) with everything just perfect, just precisely pixel perfect.
+With Linux the story was a bit similar. I've used Arch since forever. It is an awesome distro where all the newest OSS software lands first. You can customize it to your heart's content, to the point of knowing exactly how many processes are running after boot, having a full working system with like 400MB of RAM usage, and having your own [rice](https://www.reddit.com/r/unixporn/) with everything just perfect, precisely pixel perfect.
 
 That was fun and all until I had to do something productive with my computer! Then the custom stuff just became friction. _X_ needed some service running to share screen, and _Y_ didn't work with a tiling window manager. I also needed to add a script to launch _Z_ because my custom launcher didn't recognize the `.desktop` files the program came with...
 
 I installed Fedora and everything just worked. It was awesome. Again I had confused wanting the process vs wanting the results.
 
-I think there's more nuance to it, but as a tinkerer/maker/engineer/hacker/what have you, I'm used to enjoying the process: building the thing, knowing how it work under the hood, being in full control and the ~~power~~ mastery it entails, realizing a vision, overcoming difficulties, learning new things and bending the computer/device/situation to my will.
+I think there's more nuance to it, but as a tinkerer/maker/engineer/hacker/what have you, I'm used to enjoying the process: building the thing, knowing how things work under the hood, being in full control and the ~~power~~ understanding it entails, realizing a vision, overcoming difficulties, learning new things and bending the computer/device/situation to my will.
 
 All of that is great, but when embarking on something new, knowing if I'm embarking on it for the process/journey or for the results has been saving me some headaches lately. As an example, I'm currently picking up Linear Algebra. The journey is arduous but I'm doing this for the results. I need this to better understand Statistical Learning. On the other hand, I'm also learning Real Analysis. It could be useful someday, but I'm doing it because I love the journey. Analysis is beautiful and elegant, infinite series are weird and mysterious (Fourier series are straight up wizardry!), Euler was an absolute genius, the landscapes are gorgeous, and I'm in it for the journey!
 
 ##### Concessions
 
-So then, here I am actually writing! This blog is still by any measure nerdy and opinionated, it is still static site generated by Zola static site generator, still deploying to Bunny by GitHub actions... but now I don't care that much about the aesthetics of the codebase. I'm using Sveltia CMS to manage content. So I went from creating a file, wrangling front matter, `index.md` tab archeology (the bunch of `index.md` are still there... I just don't see them!) to a textbox on a website! Write some text, see a preview, drag and drop images, and publish. It went from a "project" to a "text-box". Sure it seems like something small, all of this just to say that you are now using s CMS? but the fact is that I'm actually writing again 😃!
+So then, here I am actually writing! This blog is still by any measure nerdy and opinionated, it is still a static site built with Zola, still deploying to Bunny by GitHub Actions... but now I don't care that much about the aesthetics of the codebase. I'm using Sveltia CMS to manage content. So I went from creating a file, wrangling front matter, `index.md` tab archeology (the `index.md` files are still there... I just don't see them) to a textbox on a website. Write some text, see a preview, drag and drop images, and publish. It went from a "project" to a "textbox". Sure, it seems like something small, all of this just to say that I'm now using a CMS? but the fact is I'm actually writing again 😃!
 
 ---
 
