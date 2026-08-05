@@ -24,7 +24,7 @@ So then the issue was _obviously_ `11ty`. If only I had _more_ control over how 
 
 So I did, or rather, so I started and never finished... 
 
-I thought that a clean UNIX-philosophy static site generator would do: [pandoc](https://pandoc.org/) can convert markdown files to HTML, some `bash` scripts to iterate through my markdown files, inject some CSS and bob's your uncle. But wait. How do I make an index page listing all the article titles and dates and sort them? well I need to read the front matter for all the posts. But wait, how do I generate an RSS/Atom feed? maybe a template? I need the data from the front matter of the posts for this _and_ a templating engine. How do I filter to exclude drafts? how do I serve? can I have hot reload?
+I thought that a clean UNIX-philosophy static site generator would do: [pandoc](https://pandoc.org/) can convert markdown files to HTML, some `bash` scripts to iterate through my markdown files, inject some CSS and Bob's your uncle. But wait. How do I make an index page listing all the article titles and dates and sort them? well I need to read the front matter for all the posts. But wait, how do I generate an RSS/Atom feed? maybe a template? I need the data from the front matter of the posts for this _and_ a templating engine. How do I filter to exclude drafts? how do I serve? can I have hot reload?
 
 Yeah, how hard can it be!
 
@@ -56,6 +56,6 @@ All of that is great, but when embarking on something new, knowing if I'm embark
 
 So then, here I am actually writing! This blog is still by any measure nerdy and opinionated, it is still a static site built with [Zola](https://www.getzola.org/), still deploying to [Bunny](https://bunny.net/) by GitHub Actions... but now I don't care that much about the aesthetics of the codebase. I'm using [Sveltia CMS](https://sveltia-cms.dev/) to manage content. So I went from creating a file, wrangling front matter, `index.md` tab archeology (the `index.md` files are still there... I just don't see them) to a textbox on a website. Write some text, see a preview, drag and drop images, and publish. It went from a "project" to a "textbox". Sure, it seems like something small, all of this just to say that I'm now using a CMS? but the fact is I'm actually writing again 😃!
 
----
+***
 
 This year I decided to participate in [The Complete Roguelike Tutorial 2026](https://www.reddit.com/r/roguelikedev/comments/1vd9noj/roguelikedev_does_the_complete_roguelike_tutorial/) on Reddit, because I've never completed a game... and I want to know how that works. (read, process :-D ) I'll likely be posting about that soon!
