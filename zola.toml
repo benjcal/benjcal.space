@@ -1,0 +1,36 @@
+base_url = "https://benjcal.space/"
+title = "Ben's Web Space"
+description = "Software developer and electronics enthusiast with a panoply of nerdy interests: amateur math, embedded dev, web dev, Linux, financial markets, ML, game dev."
+author = "Ben Calderon"
+default_language = "en"
+
+generate_feeds = true
+feed_filenames = ["feed.xml"]
+feed_limit = 10
+
+generate_sitemap = true
+generate_robots_txt = true
+
+[markdown]
+lazy_async_image = true
+
+[markdown.highlighting]
+code = true
+theme = "catppuccin-mocha"
+
+[extra]
+# hugo-paper theme params
+color = "linen" # linen | wheat | gray | light
+name = "Ben Calderon"
+bio = "Hello! I'm Ben, and welcome to my corner of the web. In here you'll find a disparate array of interests and curiosities, depending on which thread I've started pulling. Math, electronics, code, Linux, markets, ML, games… you get the idea."
+github = "benjcal"
+linkedin = "benjcal"
+avatar = "https://github.com/benjcal.png"
+
+[[extra.menu]]
+name = "Home"
+url = "/"
+
+[[extra.menu]]
+name = "About"
+url = "/about/"

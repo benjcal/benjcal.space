@@ -1,0 +1,32 @@
+/*
+ * Fixes for the theme's stale committed build (hugo-paper v6.31.0).
+ * These rules replace the `dark-bg` utility from assets/app.css
+ * (`@apply dark:before:fixed dark:before:inset-0 dark:before:z-[-1] dark:before:bg-black/85`)
+ * which is missing from the prebuilt main.css.
+ * Rebuild main.css from tools/app.css to eventually drop this file.
+ */
+
+body::before,
+.nav-wrapper::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-color: rgb(0 0 0 / 85%);
+  display: none;
+}
+
+html.dark body::before,
+html.dark .nav-wrapper::before {
+  display: block;
+}
+
+html.dark .nav-wrapper::before {
+  position: absolute;
+}
+
+@media (min-width: 1024px) {
+  .nav-wrapper::before {
+    display: none;
+  }
+}

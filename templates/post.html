@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<article>
+  <header class="mb-14">
+    <h1 class="my-0! pb-2.5">{{ page.title }}</h1>
+    <div class="text-xs antialiased opacity-60">
+      <time>{{ page.date | date(format="%b %-d, %Y") }}</time>
+      <span class="mx-1">&middot;</span>
+      <span>{{ config.author }}</span>
+    </div>
+  </header>
+
+  <section>{{ page.content | safe }}</section>
+
+  <!-- Post Nav -->
+  {% if page.higher or page.lower %}
+  <nav
+    class="mt-24 flex overflow-hidden rounded-xl bg-black/[3%] text-lg leading-[1.2]! *:flex *:w-1/2 *:items-center *:p-5 *:font-medium *:no-underline dark:bg-white/[8%] [&>*:hover]:bg-black/[2%] dark:[&>*:hover]:bg-white/[3%]"
+  >
+    {% if page.higher %}
+    <a class="ltr:pr-3 rtl:pl-3" href="{{ page.higher.permalink | safe }}"
+      ><span class="ltr:mr-1.5 rtl:ml-1.5">←</span><span>{{ page.higher.title }}</span></a
+    >
+    {% endif %}
+    {% if page.lower %}
+    <a
+      class="justify-end pl-3 ltr:ml-auto rtl:mr-auto"
+      href="{{ page.lower.permalink | safe }}"
+      ><span>{{ page.lower.title }}</span><span class="ltr:ml-1.5 rtl:mr-1.5">→</span></a
+    >
+    {% endif %}
+  </nav>
+  {% endif %}
+</article>
+
+{% endblock %}

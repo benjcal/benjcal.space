@@ -1,0 +1,53 @@
+# Sveltia CMS configuration
+# Docs: https://github.com/sveltia/sveltia-cms
+# Same config format as Decap/Netlify CMS.
+
+# Auth: GitHub Personal Access Token (classic or fine-grained) pasted at login.
+# No OAuth app needed. Fine-grained token: contents read/write on this repo.
+backend:
+  name: github
+  repo: benjcal/benjcal.space
+  branch: main
+  auth_methods: [token]
+
+# Media: images uploaded in the editor land in the post's own folder
+# (content/blog/<slug>/), so the relative references Zola expects keep
+# working. `{{slug}}` templating in media folders is supported by Sveltia.
+# Fallback if uploads misbehave: media_folder: static/img, public_folder: /img
+media_folder: "{{slug}}"
+public_folder: "/blog/{{slug}}"
+
+collections:
+  - name: blog
+    label: Blog
+    folder: content/blog
+    create: true
+    path: "{{slug}}/index"
+    slug: "{{slug}}"
+    extension: md
+    format: toml-frontmatter
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Description, name: description, widget: text, required: false }
+      - {
+          label: Date,
+          name: date,
+          widget: datetime,
+          date_format: "YYYY-MM-DD",
+          time_format: false,
+          format: "YYYY-MM-DD",
+        }
+      - { label: Draft, name: draft, widget: boolean, default: false, required: false }
+      - { label: Body, name: body, widget: markdown }
+
+  - name: pages
+    label: Pages
+    files:
+      - name: about
+        label: About
+        file: content/about.md
+        extension: md
+        format: toml-frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Body, name: body, widget: markdown }
