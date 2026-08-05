@@ -36,7 +36,7 @@ jobs:
           set -euo pipefail
           test -n "$RCLONE_CONFIG_BUNNY_ACCESS_KEY_ID"
           test -n "$RCLONE_CONFIG_BUNNY_SECRET_ACCESS_KEY"
-          rclone sync public/ bunny: --verbose
+          rclone sync public/ "bunny:${RCLONE_CONFIG_BUNNY_ACCESS_KEY_ID}" --verbose
 
       - name: Purge CDN cache
         env:
