@@ -54,7 +54,7 @@ All of that is great, but when embarking on something new, knowing if I'm embark
 
 ## 🤝 Concessions
 
-So then, here I am actually writing! This blog is still by any measure nerdy and opinionated, it is still a static site built with [Zola](https://www.getzola.org/), still deploying to [Bunny](https://bunny.net/) by GitHub Actions... but now I don't care that much about the aesthetics of the codebase. I'm using [Sveltia CMS](https://sveltia-cms.dev/) to manage content. So I went from creating a file, wrangling front matter, `index.md` tab archeology (the `index.md` files are still there... I just don't see them) to a textbox on a website. Write some text, see a preview, drag and drop images, and publish. It went from a "project" to a "textbox". Sure, it seems like something small, all of this just to say that I'm now using a CMS? but the fact is I'm actually writing again 😃!
+So then, here I am actually writing! This blog is still by any measure nerdy and opinionated, it is still a static site built with [Zola](https://www.getzola.org/), still deploying to [Bunny](https://bunny.net/) by GitHub Actions... but now I don't care that much about the aesthetics of the codebase. I'm using [Sveltia CMS](https://sveltiacms.app/) to manage content. So I went from creating a file, wrangling front matter, `index.md` tab archeology (the `index.md` files are still there... I just don't see them) to a textbox on a website. Write some text, see a preview, drag and drop images, and publish. It went from a "project" to a "textbox". Sure, it seems like something small, all of this just to say that I'm now using a CMS? but the fact is I'm actually writing again 😃!
 
 ***
 
