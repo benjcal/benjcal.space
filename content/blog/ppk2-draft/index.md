@@ -1,5 +1,5 @@
 +++
-title = "PPK2 Draft"
+title = "[DRAFT] PPK2 Draft"
 description = "Post about learning about communicating with the PPK2"
 date = 2025-05-27
 draft = true
