@@ -26,14 +26,16 @@ jobs:
 
       - name: Sync to BunnyCDN storage
         env:
-          RCLONE_CONFIG_BUNNY_TYPE: bunny
-          RCLONE_CONFIG_BUNNY_STORAGE_ZONE: ${{ secrets.BUNNY_STORAGE_ZONE }}
-          RCLONE_CONFIG_BUNNY_KEY: ${{ secrets.BUNNY_STORAGE_PASSWORD }}
+          RCLONE_CONFIG_BUNNY_TYPE: s3
+          RCLONE_CONFIG_BUNNY_PROVIDER: Other
+          RCLONE_CONFIG_BUNNY_ENDPOINT: https://ny-s3.storage.bunnycdn.com
+          RCLONE_CONFIG_BUNNY_ACCESS_KEY_ID: ${{ secrets.BUNNY_STORAGE_ZONE }}
+          RCLONE_CONFIG_BUNNY_SECRET_ACCESS_KEY: ${{ secrets.BUNNY_STORAGE_PASSWORD }}
+          RCLONE_CONFIG_BUNNY_FORCE_PATH_STYLE: "true"
         run: |
           set -euo pipefail
-          test -n "$RCLONE_CONFIG_BUNNY_STORAGE_ZONE"
-          test -n "$RCLONE_CONFIG_BUNNY_KEY"
-          rclone help backends | grep -q bunny
+          test -n "$RCLONE_CONFIG_BUNNY_ACCESS_KEY_ID"
+          test -n "$RCLONE_CONFIG_BUNNY_SECRET_ACCESS_KEY"
           rclone sync public/ bunny: --verbose
 
       - name: Purge CDN cache
