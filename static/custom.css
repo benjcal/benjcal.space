@@ -6,8 +6,7 @@
  * Rebuild main.css from tools/app.css to eventually drop this file.
  */
 
-body::before,
-.nav-wrapper::before {
+body::before {
   content: "";
   position: fixed;
   inset: 0;
@@ -16,17 +15,27 @@ body::before,
   display: none;
 }
 
-html.dark body::before,
-html.dark .nav-wrapper::before {
+html.dark body::before {
   display: block;
 }
 
-html.dark .nav-wrapper::before {
+/*
+ * Dark backdrop for the mobile menu sheet. Scoped below 1024px (Tailwind's
+ * `lg:` breakpoint): at >=1024px the nav-wrapper becomes `lg:static`
+ * (unpositioned), so an `absolute; inset: 0` pseudo-element would resolve
+ * against the viewport and cover the whole page.
+ */
+.nav-wrapper::before {
+  content: "";
   position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: rgb(0 0 0 / 85%);
+  display: none;
 }
 
-@media (min-width: 1024px) {
-  .nav-wrapper::before {
-    display: none;
+@media (max-width: 1023px) {
+  html.dark .nav-wrapper::before {
+    display: block;
   }
 }
