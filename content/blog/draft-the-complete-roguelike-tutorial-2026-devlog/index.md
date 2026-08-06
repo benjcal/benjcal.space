@@ -7,6 +7,15 @@ draft = true
 
 Let's learn some video game programming!
 
+Outline
+
+* about the event
+* quick word about roguelike (maybe)
+* tech choices, C++23 and CMake,CPM
+* day 0 and 1 
+* upcoming 
+
+
 This is something that I've been wanting to do for a while. Video games are fun and I've always wanted to know how they are made, and how can I bring my ideas into a cool fun interactive experiences. But also, I think it'll teach me some very interesting and useful programing techniques.
 
 You see, games sort of fall in the category of even driven programming, like, something happens and the game does something. That something can be time passed, or the player pressed a key or a network packet was received, and the game reacts to those events in a predetermined way.
@@ -31,7 +40,8 @@ The community if following [this](https://rogueliketutorials.com/tutorials/tcod/
 
 In case you are still thinking about old C++, let me show you how a modern C++23 hello world looks like
 
-```c++
+```c
+++
 #include <print>
 
 auto main() {
@@ -44,7 +54,7 @@ The tutorial uses a library called [libtcod](https://github.com/libtcod/libtcod)
 
 As I looked around, C++ fit the bill. Now, this language is a language that people love to hate, and I can see why. You can do the same thing in C++ in probably a dozen ways. The language is HUGE and has overlapping features and rough edges. It has different support between compilers and a bunch of obscure "principles" like RIIA and "smart pointers".
 
-So, a way to see it is, this language gives the developer A TON of creative freedom! You can do most of what you can think of in C++, including very dumb things. As contrast, a complete opposite of this language would e Golang. Go goes out of its way to enforce only one way of doing things (i.e. there's only one loop, `for`, no`while`, no `do while`, no iterator pattern, no `.forEach()`. That can be limiting, but when working with a team, it is pure bliss! The creativity is great for an individual, but when multiple people, with varied background come together to try to make one thing in common, creativity can be quite annoying. In C++, you can "know" C++ and the look at somebody else's code and have no clue what is happening because they are using some feature you don't know... and there are A LOT of those! but with Go? All go code looks the same! different names and functions and whatever, but all the code looks the same! Did you know that having a wrong name, using incorrect indentation or an unsued variable all are compiler errors in Go? *chef kiss*. Your code wont even run if you called something `this_thing` instead of `thisThing`
+So, a way to see it is, this language gives the developer A TON of creative freedom! You can do most of what you can think of in C++, including very dumb things. As contrast, a complete opposite of this language would e Golang. Go goes out of its way to enforce only one way of doing things (i.e. there's only one loop, `for`, no`while`, no `do while`, no iterator pattern, no `.forEach()`. That can be limiting, but when working with a team, it is pure bliss! The creativity is great for an individual, but when multiple people, with varied background come together to try to make one thing in common, creativity can be quite annoying. In C++, you can "know" C++ and the look at somebody else's code and have no clue what is happening because they are using some feature you don't know... and there are A LOT of those! but with Go? All go code looks the same! different names and functions and whatever, but all the code looks the same! Did you know that having a wrong name, using incorrect indentation or an unsued variable all are compiler errors in Go? _chef kiss_. Your code wont even run if you called something `this_thing` instead of `thisThing`
 
 But we are talking about C++, not Golang. I like C++ because in a codebase that I fully control I get to choose what feature I use and which ones I don't. I get to choose what patterns to implement in my code, what libraries, how to build the thing, which compiler, what formatting to enforce... I have a lot of power, and I like it!
 
