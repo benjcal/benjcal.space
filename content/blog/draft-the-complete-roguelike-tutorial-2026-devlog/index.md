@@ -5,7 +5,34 @@ date = "2026-08-06"
 draft = true
 +++
 
-Let's learn some video game programming!
+Alright, let's learn some video game programming!
+
+Remember that feeling that time when you wrote incantations into text pad and then some more spells into a black window with white letters and then the computer responded to you? How is called, fun? Remember last time you felt that while coding!? Well, I want some of that!
+
+Here's the map of the land... let's talk about a little about the event, the conceptual framework for a game program, technical choices, project structure, and lessons learn from day 0 and 1 of the tutorial, and above all, let's have fun!
+
+### The event
+
+There's not a lot to say about the event that is not in [the announcement]([https://www.reddit.com/r/roguelikedev/comments/1vd9noj/roguelikedev_does_the_complete_roguelike_tutorial/](https://www.reddit.com/r/roguelikedev/comments/1vd9noj/roguelikedev_does_the_complete_roguelike_tutorial/)). What really called my attention from this is less the tutorial, or even the type of game, although when I'm happy but want to feel frustrated I've been known to open a Roguelike game! But, the attractive element of this is the community! Not like I have interacted a ton with the community but I've been a lurker for years and they seems like a cool bunch! But even beyond that, something I struggle is finishing stuff when by myself, even stuff that I know I _want_ to finish. I've come to realize that I'm a lot more likely to do something, if I'm not alone in it, or if I have an external structure. Heck, I've been wanting to deepen my math maturity, and tried quite a bit by myself, and giving up. Ended up enrolling in a community college course, and actually finished (and enjoyed!) Calculus 1 and 2! The point is, body-doubling, accountability, or just straight up knowing that my wife is around, is enough for me to actually do stuff that I want to do vs watching tons of YouTube and then next thing I know is 11 PM and I've got stuff to do the next day! 🤦‍♂️
+
+I remember taking with a friend some time ago... when you are in a room full of people, you can be silent, but you are still there, you occupy space, you exists in that room and in some way you are part of what is happening in that room. In the internet, picture a chatroom, you can be part of that but if you don't say anything, if you don't interact, well, you don't really exists in that group. This can be rather thought for introverts. Who am I with the gull to dare think I have something to say? Well... you are you! which makes you unique, which makes what you want to say unique! Nobody has the combination of experiences, memories, skills, etc, that you have! So, say something! exists!
+
+The bonus of the internet though is that, although in a room full of people it might be challenging to find people with similar interest, in the internet with the millions on people online, we have a high chance of finding weirdos like we! And that is community! 
+
+Uff, long rant there... but anyway, what is special about this event for me is the two-fold bonus of me wanting to learn video game development and not doing it alone (I've tried before... got nowhere). K, 'nuff about that.
+
+### Video Game Programming
+
+From the tutorial (we'll get there soon enough) video games have this _main loop_ thing. Remember how we learned that infinite loops are bad in programming? Nah, now they are the thing we use! Kind of similar to in math, you can't divide by 0... then when you come to calculus it'd be like _'lol, sure we can know what is something divided by zero, at the limit!'._ At any rate a main infinite loop in which you do things is very similar conceptually to embedded development. You have the same component of a `while(true)` or `for(;;)` depending on if you are a vanilla or chocolate person... anyways, you have an infinite loop and then in it some things happen (events) that slightly change 
+
+
+
+
+
+
+
+
+
 
 Outline
 
@@ -14,7 +41,6 @@ Outline
 * tech choices, C++23 and CMake,CPM
 * day 0 and 1 
 * upcoming 
-
 
 This is something that I've been wanting to do for a while. Video games are fun and I've always wanted to know how they are made, and how can I bring my ideas into a cool fun interactive experiences. But also, I think it'll teach me some very interesting and useful programing techniques.
 
