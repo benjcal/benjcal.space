@@ -25,9 +25,7 @@ Uff, long rant there... but anyway, what is special about this event for me is t
 
 From the tutorial (we'll get there soon enough) video games have this _main loop_ thing. Remember how we learned that infinite loops are bad in programming? Nah, now they are the thing we use! Kind of similar to in math, you can't divide by 0... then when you come to calculus it'd be like _'lol, sure we can know what is something divided by zero, at the limit!'._ At any rate a main infinite loop in which you do things is very similar conceptually to embedded development. You have the same component of a `while(true)` or `for(;;)` depending on if you are a vanilla or chocolate person... anyways, you have an infinite loop and then in it some things happen (events) that leave messages for other parts of the loop to 
 
----
-
-
+***
 
 Outline
 
