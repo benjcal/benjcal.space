@@ -44,7 +44,8 @@ target_link_libraries(roguelike PRIVATE libtcod::libtcod)
 
 If it's been a while, here is how a hello world looks like in C++ nowdays:
 
-```c++
+```c
+++
 #include <print>
 
 int main() {
@@ -53,15 +54,15 @@ int main() {
 }
 ```
 
-No more `<<` yay!
+No more `<<` of `endl` yay!
 
-A quick note about `cmake`, I can never remember the arguments and command... so we make a `justfile` and *just* need to run `just build`, `just run`, `just clean` to compile, run and clean the build artifacts respectively :-)
+A quick note about `cmake`, I can never remember the arguments and command... so we make a `justfile` and _just_ need to run `just build`, `just run`, `just clean` to compile, run and clean the build artifacts respectively :-)
 
 ### Part 1 - Drawing the '@' symbol and moving it around
 
-Anyways, after completely ignoring Part 0 and doing my own thing, we come to Part 1. Since I've decided to "follow" this tutorial in C++ instead of python I'm aware I've signed up for translating python idioms and libtcod APIs to C++.
+Anyways, after completely ignoring Part 0 we come back to the tutorial in Part 1. Since I've decided to "follow" this tutorial, with modifications, an extra thing we've signed up for is translating Python idioms and libtcod APIs to C++.
 
-Most of the things in the tutorial translated pretty close to C++ and getting Part 1 of the tutorial running was pretty uneventful except for this line:
+As we work through the tutorial we come to this:
 
 ```c
 ++
@@ -70,7 +71,7 @@ while(true) {
 }
 ```
 
-Wait a second, I thought that infinite loops were bad! Well turns out that when you start working with computers at lower levels they kind of fundamentally work in an infinite loop. You see, your CPU is kind of like an eager dog that you just hinted that you are going to take him for a walk... and he is like "now? is it now? no, I bet it is now? ok, now for real? now? now? now?"
+Wait a second, weren't we taught that infinite loops were bad!? Well turns out that when you start working with computers at lower levels they kind of fundamentally work in an infinite loop. You see, your CPU is kind of like an eager dog that you just hinted that you are going to take him for a walk... and he is like "now? is it now? no, I bet it is now? ok, now for real? now? now? now?"
 
 Your computer, your operating system, the "server" from where you loaded this website is kind of constantly asking "is there something to do? is there something to do? is there something to do?" and that CPU utilization thing at 8% is saying that 92% of the time the answer to the CPU's question of whether there's something needed to do is nop — actually, the answer is a `nop` operation in most CPU architectures! except that in contrast with your dog who asks if it's time to go out every two seconds, your computer asks if there's something it needs to do about 4.4 billion times per second on my machine! There's a lot more nuance to this, interrupts and CPU frequency scaling and whatnot, but as a mental model that is kind of how your computer works and in that sense, game development is very quaint in how it kind of resembles low-level computer programming.
 
