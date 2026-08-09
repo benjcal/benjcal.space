@@ -1,41 +1,61 @@
 +++
 title = "[DRAFT] The Complete Roguelike Tutorial 2026 Devlog"
 description = ""
-date = "2026-08-07"
+date = "2026-08-09"
 draft = true
 +++
 
 Alright, let's learn some video game programming!
 
-This year I'm doing [*The Complete Roguelike Tutorial*](https://www.reddit.com/r/roguelikedev/comments/1vd9noj/roguelikedev_does_the_complete_roguelike_tutorial/) in the roguelikedev subreddit, which is based on [this](https://rogueliketutorials.com/tutorials/tcod/v2/) tutorial. What I'm excited about is the convergence of a couple of things: video game development, something that I've been curious about for a long time, roguelike games, which I casually enjoy, and a cool community, because it is always more fun (and more likely to do stuff) with other people! Here is the [repo](https://github.com/benjcal/roguelikedev-2026).
+This year I'm doing [_The Complete Roguelike Tutorial_](https://www.reddit.com/r/roguelikedev/comments/1vd9noj/roguelikedev_does_the_complete_roguelike_tutorial/) in the [roguelikedev](https://www.reddit.com/r/roguelikedev/) subreddit, which is based on [this tutorial](https://rogueliketutorials.com/tutorials/tcod/v2/). What excites me about this event is the convergence of a couple of things: video game development, something that I've been curious about for a long time, roguelike games, which I casually enjoy, and a cool community, because it is always more fun to do stuff with other people, and more likely to fishing stuff too! Here is the my [repo](https://github.com/benjcal/roguelikedev-2026) of the game.
 
-Anyways, for the uninitiated, roguelike is a genre of video games that are like the game Rogue (how surprising!). They are usually characterized by being notoriously difficult and brutal, permadeath games! It doesn't matter if you've spent 7 hours carefully and meticulously going down 7 levels in a dungeon, you died on the 8th and there's nothing left, nothing saved, no retries... you just died... you can start a new game with a new random seed in level 1. Uff!
+For the uninitiated, the Wikipedia for [Roguelike](https://en.wikipedia.org/wiki/Roguelike) explains pretty well what a Roguelike is. Two of these games that I've played and never won yet are [Brogue](https://sites.google.com/site/broguegame/) and [DCSS](https://crawl.develz.org/). They tend to be pretty brutal with perma-death as one of their "features", but they have a charm and replayability that kind of keeps me coming back!
 
-This week was Part 0 and 1 of the tutorial, so without further ado, let's jump in!
+[Week 1](https://www.reddit.com/r/roguelikedev/comments/1vfs4rs/roguelikedev_does_the_complete_roguelike_tutorial/) (Aug 4) was Part 0 and 1 of the tutorial, so without further ado, let's jump in!
 
 ### Part 0 - Setting up
 
-I started this with the attitude of taking it easy, follow the process, do only the weekly part, and share and have fun, instead of like throw a few focus hours, do 7 parts in one day, and then never look at it. So like, I'm actually interested in following through and complete a full game of my own, even if it's just a generic tutorial game. I believe that there is something valuable in learning game programming, some things that I suspect, and some others that I don't know yet... but anyways, that was the attitude, let's put the "experienced engineer" aside for a bit, and take a curious beginner attitude.
+My approach to this was, let's just trust the process, follow the tutorial, share with the community and let's actually finish a game. I've dabbled in game development before but haven't gotten too far. I'd start with a lot of enthusiasm, follow a tutorial and do a ton for a day or two and then drop it. So I'm trying to have more of a beginner attitude as I participate in this community event.
 
-And... it's gone! Right in day 0 during the setup they are sharing how to write a hello world in Python and install `tcod`, the main library this tutorial is based on. A quick search took me to the repo of the library, which is actually called [libtcod](https://github.com/libtcod/libtcod) and is written in C++. Well, what do you know, I love C++, especially C++23 with such niceties as `std::println` and `std::variant` and `std::optional`!
+And... it's all gone! Right in day 0 during the setup the tutorial starts with a hello world in Python, installing [tcod](https://github.com/libtcod/libtcod), the main library/framework used in this tutorial. Well, I don't particularly want to write python, and a quick search online shows that the Python `tcod` package is actually `libtcod` a C/C++ library, which is just as well because I wanted to do a game in C++, specifically in C++23 that has such niceties as `std::println` and `std::variant` and `std::optional`!
 
-So then, we throw the whole day 0 out and set this up in C++23. One characteristic of C++ is that it lets you do almost anything in as many ways as you can imagine! you have a choice of compilers, build systems, dependency managers, linters, static checkers, code formatters, and whathaveyou! My favorite tools at the moment are CMake with CPM.cmake for package management, clangd as my LSP, and since I can never remember the cmake commands I use `just` as a command runner so I can run commands like `just run` or `just clean` and be on my merry way :-) A quick note about C++ build and dependency management might be interesting here. I've used Meson in the past and it is such a lovely build system! Notable users are GNOME and GTK, which is how I became familiar with Meson while learning GTK4. The thing though is that meson is a lot less common than CMake and maybe there's a way, but I haven't spent too much time learning how to use projects that use CMake as a build system (like libtcod in our case) to work with Meson.
+So, after completely ignoring Part 0 of the tutorial we move to setup a new C++23 project. I'll be using CMake for build system and generating a `compile_commands.json` for `clangd` (LSP for C/C++). Nothing surprising here. To add `libtcod` to the project is literally copy/paste the instructions from their README and we are cooking!
 
-But even though CMake might not have the niceties like `meson init` and such, it makes up for them in being used almost EVERYWHERE! I used to be afraid of the spells and incantations in a `CMakeLists.txt`, but they are not really scary once you actually decide to learn them. I found this [YouTube playlist](https://youtube.com/playlist?list=PLalVdRk2RC6o5GHu618ARWh0VO0bFlif4) that made things click for me. But you can think of a `CMakeLists.txt` file kind of as source code that calls a bunch of functions to configure your project. Idk if I'm doing a good job at explaining the concept I have in mind, but imagine you have source code that all you do is call functions provided by some library to do something, that's kind of all a CMakeLists.txt file is — you call a bunch of CMake functions to tell it what you want it to do with your source code.
+```cmake
+cmake_minimum_required(VERSION 4.2)
+project(roguelike LANGUAGES CXX C)
 
-Now, a word about C/C++ dependencies. When all that you've been exposed to is something like Python or Go, or npm, or Java, even though the access to dependencies that you have there is impressive, it is dwarfed by the ridiculous amount of libraries you can use in C/C++! The world is written in C/C++! Even your famous python libraries like numpy and pandas are written in C/C++. Now, I don't want to start a holy war about programming languages, but just search in your package manager for `lib*` and pretty much everything you see there is a C or C++ library. Pretty cool, right?
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-Now, those `lib*` in your package manager are one way to access C/C++ libraries, another is to use a dependency manager like CPM.cmake or vcpkg. I've used both and certainly have an affinity towards CPM.cmake for how clean and straightforward it is to use!
+# libtcod
+include(FetchContent)
+FetchContent_Declare(
+    libtcod
+    GIT_REPOSITORY https://github.com/libtcod/libtcod
+    GIT_SUBMODULES ""
+    GIT_TAG 2.2.2
+)
+FetchContent_MakeAvailable(libtcod)
 
-But CPM.cmake is only for one type of dependency. When it comes to C++ I usually take a tiered approach to dependencies. The foundational ones, like GLFW, or SDL3 (which is used in this project) or GSL or libzstd or libpng for example, I'm fine using those from my system, that is my package manager \*-dev packages.
+add_executable(roguelike src/main.cpp)
+target_link_libraries(roguelike PRIVATE libtcod::libtcod)
+```
 
-The second group are single-header libraries, which are exactly what they sound like. Take a single file, put it in your codebase and that is all! No lock files, no supply-chain attacks, no dependency management or version conflict resolution, one file and you are good to go! The quintessential examples of libraries like this are [stb_*](https://github.com/nothings/stb) but you also have other nice ones like nuklear or [cereal](https://uscilab.github.io/cereal/)
+If it's been a while, here is how a hello world looks like in C++ nowdays:
 
-I really enjoy single header libraries! I've even dabbled in making [my own!](https://git.sr.ht/~benjcal/bc_libs/tree/main/item/bc_buffer.h). You learn, encapsulate that knowledge in a single-header library, and now you've added a new tool to your toolbox! It's kind of like in woodworking you make your life easier by using your woodworking tools and skills to make new tools! 3D printing has the same characteristic of meta-improvements!
+```c++
+#include <print>
 
-Anyways, the final set of dependencies in the hierarchy are those for which I use CPM.cmake or vcpkg, they are a bit heftier than a single header, might not be easily accessible in my package manager, or I might want the newest releases. Notable examples I've used in other projects are JUCE, SFML, ImGui and TA-lib. Those dependencies usually have a few source files and headers and such as to make them annoying to vendor.
+int main() {
+  std::println("Hello World!");
+  return 0;
+}
+```
 
-But how do you choose which one to put where? This project presented a perfect example. `libtcod` had instructions for how to configure CMake to fetch the library. Those configurations not only fetch libtcod but its dependencies, so when I originally fetched it, it all worked but it took too long to compile... after a quick inspection, the thing was compiling the whole SDL3 library! Well, that one was an easy one, I can install the development packages for SDL3 from my package manager and use those! and so I did. So, if it is something "heavy" I first look for using shared libraries and development packages. If it's medium, it is a candidate for CPM.cmake and if it is a single header library I can either vendor it or use CPM.cmake as well... And as you'll notice, as with most things C++, you almost always have a ton of options regarding how you can do things. That might seem like a negative for some and if using this in a team, strong conventions would need to be decided, but for me it's just fun! Being able to weigh the pros and cons, tradeoffs and such, and then have my project the way I want it is part of what makes programming fun for me!
+No more `<<` yay!
+
+A quick note about `cmake`, I can never remember the arguments and command... so we make a `justfile` and *just* need to run `just build`, `just run`, `just clean` to compile, run and clean the build artifacts respectively :-)
 
 ### Part 1 - Drawing the '@' symbol and moving it around
 
@@ -43,7 +63,8 @@ Anyways, after completely ignoring Part 0 and doing my own thing, we come to Par
 
 Most of the things in the tutorial translated pretty close to C++ and getting Part 1 of the tutorial running was pretty uneventful except for this line:
 
-```c++
+```c
+++
 while(true) {
     ...
 }
@@ -73,8 +94,6 @@ For the most part handling inputs is pretty straightforward. You have some way t
 
 What is more interesting is how you organize your code around those events! As you are working on a game, your events — or what happens in them — will get more and more complicated as you go on. First, when you press the down key the player simply moves down... but later you'll want to deal with stuff like, is there a wall in the way? is the character frozen? does it have a speed bonus so that the movement is faster? If all of that is done inside an `if (key_down) {...}` you can imagine how messy and error-prone that if statement is going to get! And honestly, this is the part that I'm the most curious about learning game development! Games seem to use a design pattern called [Entity Component System (ECS)](https://en.wikipedia.org/wiki/Entity_component_system) which is one of the principal reasons why I want to learn game development! It seems like a very powerful way to think about and organize complex interacting parts. I know very little about it but lately I've been realizing how useful and powerful design patterns can be, and this one is one that I want to get under my belt. And doing so while making a video game sounds like a doubly good thing!
 
-
-
 ### Postlude 1: Community
 
 What really caught my attention from this is less the tutorial, or even the type of game, although when I'm happy but want to feel frustrated I've been known to open a Roguelike game! But, the attractive element of this is the community! Not like I have interacted a ton with the community but I've been a lurker for years and they seem like a cool bunch! But even beyond that, something I struggle is finishing stuff when by myself, even stuff that I know I _want_ to finish. I've come to realize that I'm a lot more likely to do something, if I'm not alone in it, or if I have an external structure. Heck, I've been wanting to deepen my math maturity, tried quite a bit by myself, and given up. Ended up enrolling in a community college course, and actually finished (and enjoyed!) Calculus 1 and 2! The point is, body-doubling, accountability, or just straight up knowing that my wife is around, is enough for me to actually do stuff that I want to do vs watching tons of YouTube and then next thing I know is 11 PM and I've got stuff to do the next day! 🤦‍♂️
@@ -89,7 +108,8 @@ Uff, long rant there... but anyway, what is special about this event for me is t
 
 In case you are still thinking about old C++, let me show you how a modern C++23 hello world looks like
 
-```c++
+```c
+++
 #include <print>
 
 auto main() {
