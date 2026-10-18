@@ -9,9 +9,9 @@ Hello there!
 
 So, I can never remeber what IP addressed I have give to devices in my network, or what IP address my router has assigned to each but recently I've been learning about ARP (or [Address Resolution Protocol](https://en.wikipedia.org/wiki/Address_Resolution_Protocol)) and tools like `arp-scan` and I wanted to share how cool it is!
 
+![](Screenshot_20261017_203056.png)
+
 Lately I've been learning networking in preparation for my CCNA exam, and I've been learning about this really cool technology called ARP! (or [Address Resolution Protocol](https://en.wikipedia.org/wiki/Address_Resolution_Protocol))
-
-
 
 So here's the story, in your local network, when you want to send a message to a device, you need both the IP address _but also_ the MAC address of the device. But why would you need two addresses you say? That is a great question that would make this post longer than what I want it to be... but the briefest answer is, your network switch doesn't speak IP addresses, all that it knows is what devices (identified by their MAC address) are connected to what port, and when it receives a packet with some MAC address, it just forwards it to the physical Ethernet port that that device is connected to. Isn't that cool!? 
 
