@@ -1,8 +1,8 @@
 +++
-title = "ARP!"
-description = "Learning why network switches are so cool!"
+title = "ARP! Tell your network to explain itself"
+description = ""
 date = "2026-10-17"
-draft = true
+draft = false
 +++
 
 Hello there!
