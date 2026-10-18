@@ -5,47 +5,32 @@ date = "2026-10-04"
 draft = true
 +++
 
-Recently I’ve been studying for my CCNA, which apart from being interesting professionally, is also excellent fuel for my home lab addiction 😅.
+Hello there!
 
-At any rate, a super cool tech that I’ve been learning about is ARP (or [Address Resolution Protocol](https://en.wikipedia.org/wiki/Address_Resolution_Protocol)), which is indispensable for communication between devices in a LAN (Local Area Network).
+So, I can never remeber what IP addressed I have give to devices in my network, or what IP address my router has assigned to each but recently I've been learning about ARP (or [Address Resolution Protocol](https://en.wikipedia.org/wiki/Address_Resolution_Protocol)) and tools like `arp-scan` and I wanted to share how cool it is!
 
-##### The briefest network packet explanation. 
-
-To send a a message over the network you need, first, something to say (duh!) but also you need to know to who you want to say it! Think of it like an envelope with a letter inside and an address in the envelope. But in networking we use two addresses instead of one. It might seem redundant or extra but it is not. I'm sure you are familiar with IP addresses. IP address is also called the logical address and it is used in router to, erm, route network packets. But when we are talking about a LAN (local area network) an router is not necessarily involved. Instead a network switch suffices to make a LAN, no router necessary. But the switch has a problem, it just received a message from your machine in port 1, and it has another 23 ethernet cables connected and it needs to decide to which port to forward that message to, and switches, in general do not know anything about IP address (this has to do with OSI model and Layer 2 and 3... not out concern today).
-
-So, how does the switch know to which port to forward the message you just sent? Well, that's where the second address comes into play! The envelope has an address for the switch to use! that is the MAC address! The switch has the job of learning the MAC address of the devices connected to each port
-
-The problem is this... When you send data over the network, that network packet has two addresses, it has the IP address of the host AND the MAC address of it too... so when it sees the MAC address 11.22.33.44.55.66 it know that that device is connected to port "Ethernet 17" and it take the message it received on port 1 and put it on port 17. That's the switch switching for you!
+Lately I've been learning networking in preparation for my CCNA exam, and I've been learning about this really cool technology called ARP! (or [Address Resolution Protocol](https://en.wikipedia.org/wiki/Address_Resolution_Protocol))
 
 
-You can think of the IP address as a logical address: it says where the packet is ultimately going. If I send a DNS request to 1.1.1.1, that is the IP the packet carries from start to finish, no matter how many routers it crosses. But my network card has no idea how to reach 1.1.1.1 directly, it can only talk to the device that is physically next to it. So the MAC address on the packet (technically frame) is the one of my router (the default gateway), and the router takes it from there. But when the device is in my LAN, there is no middleman, so the MAC address I need is the one of the device itself.
 
-For the IP address we can just assume that it is a given, my Proxmox server is at 192.168.88.20, but I never had to type the MAC address to ssh into that server... So, how does my machine know so it can write the complete frame to send data to that server?
+So here's the story, in your local network, when you want to send a message to a device, you need both the IP address _but also_ the MAC address of the device. But why would you need two addresses you say? That is a great question that would make this post longer than what I want it to be... but the briefest answer is, your network switch doesn't speak IP addresses, all that it knows is what devices (identified by their MAC address) are connected to what port, and when it receives a packet with some MAC address, it just forwards it to the physical Ethernet port that that device is connected to. Isn't that cool!? 
 
-Well, it’s rather simple but at the same time ingenious. It just asks everybody on the network who has the IP address of, in this case, 192.168.88.20!
+Anyways, I bet you've never written `ping AA:BB:CC:DD:EE:FF:GG:HH` Ain't nobody got time for that... so how does your computer knows the MAC address for device 192.168.88.140 when you want to ping it? Well, it asks, literaly!
 
-So before the packet is sent, a broadcast message, that is, a message that goes to every network device (it’s sent to the special MAC `ff:ff:ff:ff:ff:ff`), is sent, but only the device that has that IP address replies with its MAC address, straight back to whoever asked! The network switch is what makes this work: it floods the broadcast out of all its ports so every device on the LAN hears the question.
+Take a look at this convo in Wireshark
 
-Let’s actually see this thing working in Linux and Wireshark!
+![](Screenshot_20261017_204349.png)
 
-In Linux the ARP table is managed using `ip neighbor` so let’s start by taking a look at what neighbors’ MAC addresses my machine knows
+Even though I ran a ping command, there's some communication that happens before, and that is ARP.
 
-...
+It all start with my computer asking everybody in the network, _"Hey, who's got 192.168.88.140?"_ (My workstation has an AsRock motherboard...). Every single device in my network got that message because it was broadcasted, that is, blasted to every single device. My network being a well behaved one, only the correct recipient answered, that is my Xerox printer saying, _"I have 192.168.88.140 and my MAC address is ....."._ And with that my computer has everything it needed to send the ping message with both the IP and MAC address in the network packet!
 
-Now, in order to actually sniff the network traffic of my machine sending the ARP request let’s forget all our neighbors with `sudo ip neighbor flush all` and make a ping afresh.
+As your computer talks with other devices in your local network it starts making a list of all the neighbors it knows.
 
-...
+On Linux you can see that list with `ip neighbour show` and if you want to see for yourself the computer asking for the MAC address of a neighbor it doesn't know you can make it forget all neighbors MAC addresses with `sudo ip neighbour flush all`.
 
-I’m a fan of how Wireshark renders these messages because that is literally what the machine is asking... “Who has 192...?” And then the reply comes: “192... is at (MAC address)”
+As you can imagine there are some interesting consequences to this mechanism... what is I have an impostor and says that they are the X address!? Nice question, look up ARP spoofing... ;-)
 
-A question that comes about then is... What if a different host replies “I am xyz”... even if they are not xyz? Well, that is called an ARP poisoning attack and you can do your own research on that... But it is one of the reasons why segmenting a network into VLANs is a good idea for network security. A VLAN limits how far a broadcast packet goes...
-
-A very nice property of ARP tho is being able to question the whole network, roll calling if you will! I can use a tool like `arp-scan` and scan my whole network asking everyone in an IP range who they are!
-
-And since I have such a poor memory of what IP address I assigned to what, that command has become a very useful tool for me! It even prints the vendor next to each MAC, which helps a ton.
-
-`sudo arp-scan 192.168.88.0/24`
-
-...
+Also, if every single device received that message... what if I have a nefarious or misbehaving device that is trolling sending broadcast messages non-stop? Well, look up Broadcast storm! (and be responsible with your knowledge!)
 
 Anyways, that is ARP in a nutshell!
