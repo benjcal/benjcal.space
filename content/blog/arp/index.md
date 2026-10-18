@@ -1,36 +1,36 @@
 +++
-title = "[DRAFT] ARP!"
+title = "ARP!"
 description = "Learning why network switches are so cool!"
-date = "2026-10-04"
+date = "2026-10-17"
 draft = true
 +++
 
 Hello there!
 
-So, I can never remeber what IP addressed I have give to devices in my network, or what IP address my router has assigned to each but recently I've been learning about ARP (or [Address Resolution Protocol](https://en.wikipedia.org/wiki/Address_Resolution_Protocol)) and tools like `arp-scan` and I wanted to share how cool it is!
+So, I can never remember what IP addresses I have given to devices on my network, or which IP my router has assigned to each one. Recently I’ve been learning about ARP (or [Address Resolution Protocol](https://en.wikipedia.org/wiki/Address_Resolution_Protocol)) and tools like arp-scan, and I wanted to share how cool it is!
 
 ![](Screenshot_20261017_203056.png)
 
-Lately I've been learning networking in preparation for my CCNA exam, and I've been learning about this really cool technology called ARP! (or [Address Resolution Protocol](https://en.wikipedia.org/wiki/Address_Resolution_Protocol))
+That’s `arp-scan` listing every device on my network with its IP, its MAC address, and, most helpful of all, the manufacturer. Here’s how the thing works.
 
-So here's the story, in your local network, when you want to send a message to a device, you need both the IP address _but also_ the MAC address of the device. But why would you need two addresses you say? That is a great question that would make this post longer than what I want it to be... but the briefest answer is, your network switch doesn't speak IP addresses, all that it knows is what devices (identified by their MAC address) are connected to what port, and when it receives a packet with some MAC address, it just forwards it to the physical Ethernet port that that device is connected to. Isn't that cool!? 
+So here’s the story. In your local network, when you want to send a message to a device, you need both its IP address and its MAC address. Why would you need two addresses, you ask? That’s a great question, and answering it fully would make this post longer than I want it to be. The briefest answer is that your network switch doesn’t speak IP. All it knows is which devices (identified by their MAC address) are connected to which port. When it receives a packet (technically a frame, but I digress) addressed to some MAC, it forwards it out the physical port that device is plugged into. That's it, that's the bulk of switches' work! 
 
-Anyways, I bet you've never written `ping AA:BB:CC:DD:EE:FF:GG:HH` Ain't nobody got time for that... so how does your computer knows the MAC address for device 192.168.88.140 when you want to ping it? Well, it asks, literaly!
+Anyway, I bet you’ve never typed `ping AA:BB:CC:DD:EE:FF` either. Ain’t nobody got time for that! `ping` only takes an IP, so how does your computer know the MAC address for 192.168.88.140 when you ping it? Well, it asks, literally!
 
-Take a look at this convo in Wireshark
+Take a look at this conversation in Wireshark:
 
 ![](Screenshot_20261017_204349.png)
 
-Even though I ran a ping command, there's some communication that happens before, and that is ARP.
+Even though I only ran a ping command, some communication happens first, and that’s ARP.
 
-It all start with my computer asking everybody in the network, _"Hey, who's got 192.168.88.140?"_ (My workstation has an AsRock motherboard...). Every single device in my network got that message because it was broadcasted, that is, blasted to every single device. My network being a well behaved one, only the correct recipient answered, that is my Xerox printer saying, _"I have 192.168.88.140 and my MAC address is ....."._ And with that my computer has everything it needed to send the ping message with both the IP and MAC address in the network packet!
+It all starts with my computer asking everybody on the network, _"Hey, who has 192.168.88.140?"_ That message is broadcast, meaning it’s sent to every device on the network. My network is well behaved, so only the right recipient answered: my Xerox printer, saying, “I have 192.168.88.140, and my MAC address is .....” (My workstation has an AsRock motherboard, if you’re wondering where the source MAC came from.) With that, my computer has everything it needs to send the ping with both the IP and the MAC in the packet.
 
-As your computer talks with other devices in your local network it starts making a list of all the neighbors it knows.
+As your computer talks to other devices on the local network, it builds a list of all the neighbors it knows.
 
-On Linux you can see that list with `ip neighbour show` and if you want to see for yourself the computer asking for the MAC address of a neighbor it doesn't know you can make it forget all neighbors MAC addresses with `sudo ip neighbour flush all`.
+On Linux you can see that list with `ip neighbour show`. If you want to watch your computer ask for the MAC of a neighbor it doesn’t know, you can make it forget everything with `sudo ip neighbour flush all`.
 
-As you can imagine there are some interesting consequences to this mechanism... what is I have an impostor and says that they are the X address!? Nice question, look up ARP spoofing... ;-)
+This mechanism has some interesting consequences. What if I have an impostor who claims to be 192.168.88.1? Good question. Look up ARP spoofing. 😉
 
-Also, if every single device received that message... what if I have a nefarious or misbehaving device that is trolling sending broadcast messages non-stop? Well, look up Broadcast storm! (and be responsible with your knowledge!)
+Also, every device receives that broadcast. What if a misbehaving device sends broadcast messages nonstop? Look up broadcast storms, and be responsible with what you learn! 😎
 
-Anyways, that is ARP in a nutshell!
+That’s ARP in a nutshell. Next time your network feels like a mystery, just ask it.
