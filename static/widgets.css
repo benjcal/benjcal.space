@@ -1,0 +1,308 @@
+:root {
+  --widget-fg: #1c1917;
+  --widget-muted: #78716c;
+  --widget-bg: #faf8f1;
+  --widget-line: rgb(28 25 23 / 30%);
+  --widget-heat-low: #4d7c0f;
+  --widget-heat-mid: #ca8a04;
+  --widget-heat-high: #dc2626;
+  --widget-grid: rgb(28 25 23 / 10%);
+}
+
+html.dark {
+  --widget-fg: #f5f5f4;
+  --widget-muted: #a8a29e;
+  --widget-bg: #0a0a0a;
+  --widget-line: rgb(245 245 244 / 32%);
+  --widget-heat-low: #a3e635;
+  --widget-heat-mid: #fbbf24;
+  --widget-heat-high: #f87171;
+  --widget-grid: rgb(245 245 244 / 11%);
+}
+
+.widget {
+  margin: 2.5rem 0;
+  padding: 1rem 0 1.1rem;
+  border-top: 1px solid var(--widget-line);
+  border-bottom: 1px solid var(--widget-line);
+  color: var(--widget-fg);
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+}
+
+.widget figcaption {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-sans, ui-sans-serif, system-ui, sans-serif);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--widget-muted);
+}
+
+.widget .widget-title {
+  display: block;
+  margin-bottom: 0.2rem;
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--widget-muted);
+}
+
+.widget p {
+  margin: 0;
+}
+
+.widget-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1.4rem;
+  margin-bottom: 0.9rem;
+  font-size: 0.78rem;
+}
+
+.widget-field {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.widget-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--widget-muted);
+}
+
+.widget-input {
+  box-sizing: border-box;
+  width: 6.5rem;
+  padding: 0.3rem 0.45rem;
+  border: 1px solid var(--widget-line);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--widget-fg);
+  font: inherit;
+  font-size: 0.85rem;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.widget-input:focus-visible {
+  outline: 1px solid var(--widget-fg);
+  outline-offset: 2px;
+}
+
+.widget-range {
+  appearance: none;
+  width: 8rem;
+  height: 1rem;
+  background: transparent;
+  cursor: pointer;
+}
+
+.widget-range:focus-visible {
+  outline: 1px solid var(--widget-fg);
+  outline-offset: 3px;
+}
+
+.widget-range::-webkit-slider-runnable-track {
+  height: 1px;
+  background: var(--widget-line);
+}
+
+.widget-range::-moz-range-track {
+  height: 1px;
+  background: var(--widget-line);
+}
+
+.widget-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 9px;
+  height: 9px;
+  margin-top: -4px;
+  border: none;
+  border-radius: 0;
+  background: var(--widget-fg);
+}
+
+.widget-range::-moz-range-thumb {
+  width: 9px;
+  height: 9px;
+  border: none;
+  border-radius: 0;
+  background: var(--widget-fg);
+}
+
+.widget-value {
+  color: var(--widget-fg);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.widget-readout {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  margin-left: auto;
+  font-variant-numeric: tabular-nums;
+}
+
+.widget-unit {
+  color: var(--widget-muted);
+}
+
+.widget-plot {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.widget-slot,
+.widget-level {
+  stroke: var(--widget-grid);
+  stroke-width: 1;
+}
+
+.widget-zero {
+  stroke: var(--widget-line);
+  stroke-width: 1;
+}
+
+.widget-axis-label {
+  fill: var(--widget-muted);
+  font-family: inherit;
+  font-size: 10px;
+  text-anchor: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.widget-wave {
+  fill: none;
+  stroke: var(--widget-fg);
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.widget-envelope {
+  fill: none;
+  stroke: var(--widget-fg);
+  stroke-width: 1;
+  stroke-dasharray: 2 4;
+  opacity: 0.35;
+}
+
+.widget-chip {
+  cursor: pointer;
+}
+
+.widget-chip rect {
+  fill: transparent;
+  stroke: var(--widget-line);
+  stroke-width: 1;
+}
+
+.widget-chip-value {
+  fill: var(--widget-muted);
+  font-family: inherit;
+  font-size: 12px;
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+.widget-chip-index {
+  fill: var(--widget-muted);
+  font-family: inherit;
+  font-size: 9px;
+  text-anchor: middle;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.widget-chip:hover rect,
+.widget-chip:focus-visible rect {
+  stroke: var(--widget-fg);
+}
+
+.widget-chip:focus-visible {
+  outline: none;
+}
+
+.widget-chip:focus-visible rect {
+  stroke-width: 2;
+}
+
+.widget-chip.is-set rect {
+  fill: var(--widget-fg);
+  stroke: var(--widget-fg);
+}
+
+.widget-chip.is-set .widget-chip-value {
+  fill: var(--widget-bg);
+  font-weight: 600;
+}
+
+.widget-wire {
+  stroke: var(--widget-line);
+  stroke-width: 1;
+}
+
+.widget-hand {
+  cursor: grab;
+  touch-action: none;
+}
+
+.widget-hand:active {
+  cursor: grabbing;
+}
+
+.widget-hand rect {
+  fill: var(--widget-bg);
+  stroke: var(--widget-fg);
+  stroke-width: 1.25;
+}
+
+.widget-hand:focus-visible {
+  outline: none;
+}
+
+.widget-hand:focus-visible rect {
+  stroke-width: 2;
+}
+
+.widget-hand .widget-hand-hit {
+  fill: transparent;
+  stroke: none;
+}
+
+.widget-hand-grip {
+  stroke: var(--widget-fg);
+  stroke-opacity: 0.45;
+  stroke-width: 1;
+}
+
+.widget-button {
+  padding: 0.25rem 0.6rem;
+  border: 1px solid var(--widget-line);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--widget-muted);
+  font: inherit;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.widget-button:hover {
+  border-color: var(--widget-fg);
+  color: var(--widget-fg);
+}
+
+.widget-button:focus-visible {
+  outline: 1px solid var(--widget-fg);
+  outline-offset: 2px;
+}

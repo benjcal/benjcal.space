@@ -37,6 +37,9 @@
     <!-- css -->
     <link rel="preload stylesheet" as="style" href="/main.css" />
     <link rel="preload stylesheet" as="style" href="/custom.css" />
+    {% if page is defined and page.extra.widget is defined and page.extra.widget %}
+      <link rel="stylesheet" href="/widgets.css" />
+    {% endif %}
 
     <!-- fonts (bunny) -->
     <link rel="preconnect" href="https://fonts.bunny.net" crossorigin />
@@ -80,5 +83,9 @@
     </main>
 
     {% include "partials/footer.html" %}
+
+    {% if page is defined and page.extra.widget is defined and page.extra.widget %}
+      <script type="module" src="{{ page.permalink }}widget.js"></script>
+    {% endif %}
   </body>
 </html>
